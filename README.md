@@ -1,13 +1,22 @@
-# SQLLektion2
-sqllektion2
-Get certain information out only
+# More SQL
+
+## Get certain information out only
+
 Get the number of rows in a table
 
+```SQL
 SELECT COUNT(*) FROM table_name
+```
+
 Search for a row
 
+```SQL
 SELECT * FROM table_name WHERE column_name LIKE "%some value%" --Here some value refers to the content of the rows
-Create today's database
+```
+
+## Create today's database
+
+```SQL
 CREATE TABLE bands (
     id          INTEGER PRIMARY KEY AUTOINCREMENT
                         UNIQUE
@@ -16,12 +25,18 @@ CREATE TABLE bands (
     formed_year INTEGER NOT NULL,
     genre       TEXT    NOT NULL
 );
+```
+
+```SQL
 INSERT INTO bands (id, band_name, formed_year, genre)
 VALUES
     (1, 'Metallica', 1981, 'metal'),
     (2, 'Black Sabbath', 1968, 'metal'),
     (3, 'Led Zeppelin', 1968, 'rock'),
     (4, 'Iron Maiden', 1975, 'metal');
+```
+
+```SQL
 CREATE TABLE albums (
     album_id      INTEGER PRIMARY KEY AUTOINCREMENT
                           UNIQUE
@@ -31,6 +46,9 @@ CREATE TABLE albums (
     band_id       INTEGER REFERENCES bands (id) 
                           NOT NULL
 );
+```
+
+```SQL
 INSERT INTO albums (album_id, album_name, released_year, band_id)
 VALUES 
     (1, 'Kill ''Em All', 1983, 1),
@@ -63,6 +81,9 @@ VALUES
     (28, 'Somewhere in Time', 1986, 4),
     (29, 'Seventh Son of a Seventh Son', 1988, 4),
     (30, 'No Prayer for the Dying', 1990, 4);
+```
+
+```SQL
 CREATE TABLE members (
     member_id  INTEGER PRIMARY KEY AUTOINCREMENT
                        NOT NULL
@@ -73,6 +94,9 @@ CREATE TABLE members (
     band_id    INTEGER REFERENCES bands (id) 
                        NOT NULL
 );
+```
+
+```SQL
 INSERT INTO members (
                         member_id,
                         first_name,
@@ -99,3 +123,4 @@ VALUES
     (16, 'Bruce', 'Dickinson', 'Vocals', 4),
     (17, 'Nicko', 'McBrain', 'Drums', 4),
     (18, 'Janick', 'Gers', 'Guitar', 4);
+```
